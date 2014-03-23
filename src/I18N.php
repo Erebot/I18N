@@ -159,12 +159,13 @@ class I18N implements \Erebot\I18N\I18NInterface
             if ($newLocale !== NULL)
                 continue;
 
+            $catalog = str_replace('\\', '_', ltrim($this->component, '\\'));
             if (isset($locale['region'])) {
                 $normLocale = $locale['language'] . '_' . $locale['region'];
                 $file = $base .
                         DIRECTORY_SEPARATOR . $normLocale .
                         DIRECTORY_SEPARATOR . $categoryName .
-                        DIRECTORY_SEPARATOR . $this->component . '.mo';
+                        DIRECTORY_SEPARATOR . $catalog . '.mo';
                 if (file_exists($file)) {
                     $newLocale = $normLocale;
                     continue;
@@ -174,7 +175,7 @@ class I18N implements \Erebot\I18N\I18NInterface
             $file = $base .
                 DIRECTORY_SEPARATOR . $locale['language'] .
                 DIRECTORY_SEPARATOR . $categoryName .
-                DIRECTORY_SEPARATOR . $this->component . '.mo';
+                DIRECTORY_SEPARATOR . $catalog . '.mo';
                 if (file_exists($file)) {
                     $newLocale = $locale['language'];
                     continue;
@@ -233,9 +234,10 @@ class I18N implements \Erebot\I18N\I18NInterface
                     return NULL;
                 }
 
+                $catalog = str_replace('\\', '_', ltrim($component, '\\'));
                 $file .=    DIRECTORY_SEPARATOR . $locale .
                             DIRECTORY_SEPARATOR . 'LC_MESSAGES' .
-                            DIRECTORY_SEPARATOR . $component . '.mo';
+                            DIRECTORY_SEPARATOR . $catalog . '.mo';
 
                 if (!file_exists($file)) {
                     $file = substr($file, 0, -3) . '.po';
