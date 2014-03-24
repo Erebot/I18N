@@ -18,14 +18,14 @@
     along with Erebot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace Erebot\I18N;
+namespace Erebot\Intl;
 
 /**
  * \brief
  *      A class which provides translations for
  *      messages used by the core and modules.
  */
-class I18N implements \Erebot\I18N\I18NInterface
+class Intl implements \Erebot\Intl\IntlInterface
 {
     /// Expiration time of entries in the cache (in seconds).
     const EXPIRE_CACHE = 60;

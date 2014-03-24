@@ -18,7 +18,7 @@
 
 require(__DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Foo.php');
 
-class I18NTest extends PHPUnit_Framework_TestCase
+class IntlTest extends PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
@@ -28,28 +28,28 @@ class I18NTest extends PHPUnit_Framework_TestCase
             'fr_FR',
         );
         foreach ($locales as $locale) {
-            $this->translators[$locale] = new \Erebot\I18N\I18N("Foo");
+            $this->translators[$locale] = new \Erebot\Intl\Intl("Foo");
             $this->translators[$locale]->setLocale(
-                \Erebot\I18N\I18NInterface::LC_MESSAGES,
+                \Erebot\Intl\IntlInterface::LC_MESSAGES,
                 $locale
             );
         }
     }
 
     /**
-     * @covers \Erebot\I18N\I18N
+     * @covers \Erebot\Intl\Intl
      */
     public function testGetLocale()
     {
         foreach ($this->translators as $locale => $translator)
             $this->assertEquals(
                 $locale,
-                $translator->getLocale(\Erebot\I18N\I18NInterface::LC_MESSAGES)
+                $translator->getLocale(\Erebot\Intl\IntlInterface::LC_MESSAGES)
             );
     }
 
     /**
-     * @covers \Erebot\I18N\I18N
+     * @covers \Erebot\Intl\Intl
      */
     public function testTranslation()
     {

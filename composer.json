@@ -1,9 +1,9 @@
 {
     "prefer-stable": true,
-    "name": "erebot/i18n",
+    "name": "erebot/intl",
     "description": "I18N API for Erebot",
-    "keywords": ["i18n", "l10n", "translations"],
-    "homepage": "https://github.com/Erebot/I18N",
+    "keywords": ["i18n", "l10n", "translations", "intl"],
+    "homepage": "https://github.com/Erebot/Intl",
     "license": "GPL-3.0+",
     "authors": [
         {
@@ -14,10 +14,10 @@
     ],
     "support": {
         "email": "erebot@erebot.net",
-        "issues": "https://github.com/Erebot/I18N/issues",
+        "issues": "https://github.com/Erebot/Intl/issues",
         "wiki": "http://erebot.github.io/Erebot/",
         "irc": "irc://irc.iiens.net/Erebot",
-        "source": "https://github.com/Erebot/I18N"
+        "source": "https://github.com/Erebot/Intl"
     },
     "require": {
         "php": ">=5.3.0",
@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Erebot\\I18N\\": "src/"
+            "Erebot\\Intl\\": "src/"
         }
     },
     "extra": {

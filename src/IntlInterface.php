@@ -18,7 +18,7 @@
     along with Erebot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace Erebot\I18N;
+namespace Erebot\Intl;
 
 /**
  * \brief
@@ -28,7 +28,7 @@ namespace Erebot\I18N;
  * to provide internationalization of the messages
  * the bot emits through logging or exceptions.
  */
-interface I18NInterface
+interface IntlInterface
 {
     /// Character classification and case conversion.
     const LC_CTYPE          = 0;
@@ -80,8 +80,8 @@ interface I18NInterface
      *
      * \retval opaque
      *      The corresponding category, returned as one of
-     *      the constants in ::Erebot::I18N::I18NInterface,
-     *      eg. ::Erebot::I18N::I18NInterface::LC_MESSAGES.
+     *      the constants in ::Erebot::Intl::IntlInterface,
+     *      eg. ::Erebot::Intl::IntlInterface::LC_MESSAGES.
      */
     static public function nameToCategory($name);
 
@@ -89,8 +89,8 @@ interface I18NInterface
      * Returns the name associated with a given category.
      *
      * \param opaque $category
-     *      One of the constants defined in ::Erebot::I18N::I18NInterface,
-     *      eg. ::Erebot::I18N::I18NInterface::LC_MESSAGES.
+     *      One of the constants defined in ::Erebot::Intl::IntlInterface,
+     *      eg. ::Erebot::Intl::IntlInterface::LC_MESSAGES.
      *
      * \retval string
      *      The name of that category (eg. "LC_MESSAGES").
@@ -102,10 +102,10 @@ interface I18NInterface
      * in canonical form for a given catergory.
      *
      * \param opaque $category
-     *      One of the constants defined in ::Erebot::I18N::I18NInterface
+     *      One of the constants defined in ::Erebot::Intl::IntlInterface
      *      indicating the category we're interested in querying.
      *      For the most basic usage, you should pass
-     *      ::Erebot::I18N::I18NInterface::LC_MESSAGES as the category.
+     *      ::Erebot::Intl::IntlInterface::LC_MESSAGES as the category.
      *
      * \retval string
      *      The canonical form of the target locale
@@ -118,10 +118,10 @@ interface I18NInterface
      * for a given catergory.
      *
      * \param opaque $category
-     *      One of the constants defined in ::Erebot::I18N::I18NInterface
+     *      One of the constants defined in ::Erebot::Intl::IntlInterface
      *      indicating the category we're interested in setting.
      *      For the most basic usage, you should pass
-     *      ::Erebot::I18N::I18NInterface::LC_MESSAGES as the category.
+     *      ::Erebot::Intl::IntlInterface::LC_MESSAGES as the category.
      *
      * \param array $candidates
      *      Array of locales that can be used.
@@ -154,11 +154,11 @@ interface I18NInterface
     public function gettext($message);
 
     /**
-     * \copydoc ::Erebot::I18N::I18NInterface::gettext()
+     * \copydoc ::Erebot::Intl::IntlInterface::gettext()
      *
      * \note
      *      This method is an alias for
-     *      ::Erebot::I18N::I18NInterface::gettext().
+     *      ::Erebot::Intl::IntlInterface::gettext().
      */
     public function _($message);
 }
