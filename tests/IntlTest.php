@@ -28,28 +28,28 @@ class IntlTest extends PHPUnit_Framework_TestCase
             'fr_FR',
         );
         foreach ($locales as $locale) {
-            $this->translators[$locale] = new \Erebot\Intl\Intl("Foo");
+            $this->translators[$locale] = new \Erebot\Intl("Foo");
             $this->translators[$locale]->setLocale(
-                \Erebot\Intl\IntlInterface::LC_MESSAGES,
+                \Erebot\IntlInterface::LC_MESSAGES,
                 $locale
             );
         }
     }
 
     /**
-     * @covers \Erebot\Intl\Intl
+     * @covers \Erebot\Intl
      */
     public function testGetLocale()
     {
         foreach ($this->translators as $locale => $translator)
             $this->assertEquals(
                 $locale,
-                $translator->getLocale(\Erebot\Intl\IntlInterface::LC_MESSAGES)
+                $translator->getLocale(\Erebot\IntlInterface::LC_MESSAGES)
             );
     }
 
     /**
-     * @covers \Erebot\Intl\Intl
+     * @covers \Erebot\Intl
      */
     public function testTranslation()
     {

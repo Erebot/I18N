@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Erebot\\Intl\\": "src/"
+            "Erebot\\": "src/"
         }
     },
     "extra": {
