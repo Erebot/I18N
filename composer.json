@@ -21,8 +21,7 @@
     },
     "require": {
         "php": ">=5.3.0",
-        "pear/pear_exception": "dev-master",
-        "fpoirotte/file_gettext": "dev-master",
+        "fpoirotte/file_gettext": "*",
         "ext-reflection": "*",
         "ext-intl": "*",
         "ext-spl": "*"
