@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "243f1a9c3d4dd9233ce88bc4f9abc1bb",
+    "hash": "2c569c124aeb9a4585d40e3bbf17759b",
     "content-hash": "7500c8467e41dec31dc9b68e21edf5cb",
     "packages": [
         {
             "name": "fpoirotte/file_gettext",
-            "version": "0.4.2-patch1",
+            "version": "0.4.2-patch2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fpoirotte/File_Gettext.git",
-                "reference": "eb3a52768a971498d4ec6ad603f06175e799bf3b"
+                "reference": "6fe84d13a1f07216e0a1eb6facfe68f502ec3303"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fpoirotte/File_Gettext/zipball/eb3a52768a971498d4ec6ad603f06175e799bf3b",
-                "reference": "eb3a52768a971498d4ec6ad603f06175e799bf3b",
+                "url": "https://api.github.com/repos/fpoirotte/File_Gettext/zipball/6fe84d13a1f07216e0a1eb6facfe68f502ec3303",
+                "reference": "6fe84d13a1f07216e0a1eb6facfe68f502ec3303",
                 "shasum": ""
             },
             "require": {
@@ -26,7 +26,7 @@
                 "php": ">=5.0.0"
             },
             "provide": {
-                "pear/file_gettext": "0.4.2-patch1"
+                "pear/file_gettext": "0.4.2"
             },
             "type": "library",
             "autoload": {
@@ -44,8 +44,7 @@
             "authors": [
                 {
                     "name": "Michael Wallner",
-                    "email": "mike@php.net",
-                    "role": "Lead"
+                    "email": "mike@php.net"
                 }
             ],
             "description": "Reader and writer for GNU PO and MO files",
@@ -53,7 +52,7 @@
             "keywords": [
                 "gettext"
             ],
-            "time": "2013-10-20 17:11:12"
+            "time": "2016-07-16 18:24:30"
         }
     ],
     "packages-dev": [
