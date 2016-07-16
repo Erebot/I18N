@@ -27,6 +27,6 @@ script:
     - vendor/bin/phpunit --coverage-clover clover.xml tests/
 
 after_script:
-    - composer require --dev $prefer_source "satooshi/php-coveralls dev-master"
-    - vendor/bin/coveralls -n -v
+    - composer require --dev satooshi/php-coveralls
+    - vendor/bin/coveralls -n -v --root_dir=src/
 
