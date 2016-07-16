@@ -28,5 +28,5 @@ script:
 
 after_script:
     - composer require --dev satooshi/php-coveralls
-    - vendor/bin/coveralls -n -v --root_dir=src/
+    - vendor/bin/coveralls -n -v
 
