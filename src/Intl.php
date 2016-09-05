@@ -64,8 +64,9 @@ class Intl implements \Erebot\IntlInterface
             self::LC_MEASUREMENT,
             self::LC_IDENTIFICATION,
         );
-        foreach ($categories as $category)
+        foreach ($categories as $category) {
             $this->locales[$category] = "en_US";
+        }
         $this->component = $component;
     }
 
@@ -87,8 +88,9 @@ class Intl implements \Erebot\IntlInterface
                 self::LC_IDENTIFICATION => 'LC_IDENTIFICATION',
             )
         );
-        if (!isset($categories[$name]))
+        if (!isset($categories[$name])) {
             throw new \InvalidArgumentException('Invalid category name');
+        }
         return $categories[$name];
     }
 
@@ -108,15 +110,17 @@ class Intl implements \Erebot\IntlInterface
             self::LC_MEASUREMENT    => 'LC_MEASUREMENT',
             self::LC_IDENTIFICATION => 'LC_IDENTIFICATION',
         );
-        if (!isset($categories[$category]))
+        if (!isset($categories[$category])) {
             throw new \InvalidArgumentException('Invalid category');
+        }
         return $categories[$category];
     }
 
     public function getLocale($category)
     {
-        if (!isset($this->locales[$category]))
+        if (!isset($this->locales[$category])) {
             throw new \InvalidArgumentException('Invalid category');
+        }
         return $this->locales[$category];
     }
 
@@ -136,28 +140,34 @@ class Intl implements \Erebot\IntlInterface
     public function setLocale($category, $candidates)
     {
         $categoryName = self::categoryToName($category);
-        if (!is_array($candidates))
+        if (!is_array($candidates)) {
             $candidates = array($candidates);
-        if (!count($candidates))
+        }
+        if (!count($candidates)) {
             throw new \InvalidArgumentException('Invalid locale');
+        }
 
         $base = $this->getBaseDir($this->component);
-        $newLocale = NULL;
+        $newLocale = null;
         foreach ($candidates as $candidate) {
-            if (!is_string($candidate))
+            if (!is_string($candidate)) {
                 throw new \InvalidArgumentException('Invalid locale');
+            }
 
             $locale = \Locale::parseLocale($candidate);
-            if (!is_array($locale) || !isset($locale['language']))
+            if (!is_array($locale) || !isset($locale['language'])) {
                 throw new \InvalidArgumentException('Invalid locale');
+            }
 
             // For anything else than LC_MESSAGES,
             // we take the first candidate as is.
-            if ($categoryName != 'LC_MESSAGES')
+            if ($categoryName != 'LC_MESSAGES') {
                 $newLocale = $candidate;
+            }
 
-            if ($newLocale !== NULL)
+            if ($newLocale !== null) {
                 continue;
+            }
 
             $catalog = str_replace('\\', '_', ltrim($this->component, '\\'));
             if (isset($locale['region'])) {
@@ -176,14 +186,15 @@ class Intl implements \Erebot\IntlInterface
                 DIRECTORY_SEPARATOR . $locale['language'] .
                 DIRECTORY_SEPARATOR . $categoryName .
                 DIRECTORY_SEPARATOR . $catalog . '.mo';
-                if (file_exists($file)) {
-                    $newLocale = $locale['language'];
-                    continue;
-                }
+            if (file_exists($file)) {
+                $newLocale = $locale['language'];
+                continue;
+            }
         }
 
-        if ($newLocale === NULL)
+        if ($newLocale === null) {
             $newLocale = 'en_US';
+        }
         $this->locales[$category] = $newLocale;
         return $newLocale;
     }
@@ -205,7 +216,7 @@ class Intl implements \Erebot\IntlInterface
      * \retval string
      *      The translation matching the given message.
      *
-     * \retval NULL
+     * \retval null
      *      The message could not be found in the translation
      *      catalog.
      *
@@ -215,23 +226,19 @@ class Intl implements \Erebot\IntlInterface
      *      again every time this method is called
      *      but only when the catalog actually changed.
      */
-    protected function get_translation($component, $message)
+    protected function getTranslation($component, $message)
     {
         $time = time();
         $locale = $this->locales[self::LC_MESSAGES];
         if (!isset(self::$cache[$component][$locale]) ||
-            $time > (self::$cache[$component][$locale]['added'] +
-                     self::EXPIRE_CACHE)) {
-
+            $time > (self::$cache[$component][$locale]['added'] + self::EXPIRE_CACHE)) {
             if (isset(self::$cache[$component][$locale]['file'])) {
                 $file = self::$cache[$component][$locale]['file'];
-            }
-            else {
+            } else {
                 try {
                     $file = $this->getBaseDir($component);
-                }
-                catch (Exception $e) {
-                    return NULL;
+                } catch (Exception $e) {
+                    return null;
                 }
 
                 $catalog = str_replace('\\', '_', ltrim($component, '\\'));
@@ -244,7 +251,7 @@ class Intl implements \Erebot\IntlInterface
                 }
 
                 if (!file_exists($file)) {
-                    return NULL;
+                    return null;
                 }
             }
 
@@ -256,27 +263,27 @@ class Intl implements \Erebot\IntlInterface
              */
             $oldErrorReporting = error_reporting(E_ERROR);
 
-            if (version_compare(PHP_VERSION, '5.3.0', '>='))
-                clearstatcache(FALSE, $file);
-            else
+            if (version_compare(PHP_VERSION, '5.3.0', '>=')) {
+                clearstatcache(false, $file);
+            } else {
                 clearstatcache();
+            }
 
-            $mtime = FALSE;
-            if ($file !== FALSE) {
+            $mtime = false;
+            if ($file !== false) {
                 $mtime = filemtime($file);
             }
 
-            if ($mtime === FALSE) {
+            if ($mtime === false) {
                 // We also cache failures to avoid
                 // harassing the CPU too much.
                 self::$cache[$component][$locale] = array(
                     'mtime'     => $time,
                     'string'    => array(),
                     'added'     => $time,
-                    'file'      => FALSE,
+                    'file'      => false,
                 );
-            }
-            else if (!isset(self::$cache[$component][$locale]) ||
+            } elseif (!isset(self::$cache[$component][$locale]) ||
                 $mtime !== self::$cache[$component][$locale]['mtime']) {
                 $parser = \File_Gettext::factory(substr($file, -2), $file);
                 $parser->load();
@@ -290,9 +297,10 @@ class Intl implements \Erebot\IntlInterface
             error_reporting($oldErrorReporting);
         }
 
-        if (isset(self::$cache[$component][$locale]['strings'][$message]))
+        if (isset(self::$cache[$component][$locale]['strings'][$message])) {
             return self::$cache[$component][$locale]['strings'][$message];
-        return NULL;
+        }
+        return null;
     }
 
     /**
@@ -312,23 +320,23 @@ class Intl implements \Erebot\IntlInterface
      *      is returned, or the original message if none
      *      could be found.
      */
-    protected function real_gettext($message, $component)
+    protected function reallyGetText($message, $component)
     {
-        $translation = $this->get_translation(
+        $translation = $this->getTranslation(
             $component,
             $message
         );
-        return ($translation === NULL) ? $message : $translation;
+        return ($translation === null) ? $message : $translation;
     }
 
     public function gettext($message)
     {
-        return $this->real_gettext($message, $this->component);
+        return $this->reallyGetText($message, $this->component);
     }
 
     public function _($message)
     {
-        return $this->real_gettext($message, $this->component);
+        return $this->reallyGetText($message, $this->component);
     }
 
     /**

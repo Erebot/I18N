@@ -83,7 +83,7 @@ interface IntlInterface
      *      the constants in ::Erebot::Intl::IntlInterface,
      *      eg. ::Erebot::Intl::IntlInterface::LC_MESSAGES.
      */
-    static public function nameToCategory($name);
+    public static function nameToCategory($name);
 
     /**
      * Returns the name associated with a given category.
@@ -95,7 +95,7 @@ interface IntlInterface
      * \retval string
      *      The name of that category (eg. "LC_MESSAGES").
      */
-    static public function categoryToName($category);
+    public static function categoryToName($category);
 
     /**
      * Returns the target locale of this translator
@@ -162,4 +162,3 @@ interface IntlInterface
      */
     public function _($message);
 }
-
