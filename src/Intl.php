@@ -175,8 +175,14 @@ class Intl implements \Erebot\IntlInterface
                 $file = $base .
                         DIRECTORY_SEPARATOR . $normLocale .
                         DIRECTORY_SEPARATOR . $categoryName .
-                        DIRECTORY_SEPARATOR . $catalog . '.mo';
-                if (file_exists($file)) {
+                        DIRECTORY_SEPARATOR . $catalog;
+
+                if (file_exists($file . '.mo')) {
+                    $newLocale = $normLocale;
+                    continue;
+                }
+
+                if (file_exists($file . '.po')) {
                     $newLocale = $normLocale;
                     continue;
                 }
@@ -185,8 +191,14 @@ class Intl implements \Erebot\IntlInterface
             $file = $base .
                 DIRECTORY_SEPARATOR . $locale['language'] .
                 DIRECTORY_SEPARATOR . $categoryName .
-                DIRECTORY_SEPARATOR . $catalog . '.mo';
-            if (file_exists($file)) {
+                DIRECTORY_SEPARATOR . $catalog;
+
+            if (file_exists($file . '.mo')) {
+                $newLocale = $locale['language'];
+                continue;
+            }
+
+            if (file_exists($file . '.po')) {
                 $newLocale = $locale['language'];
                 continue;
             }
