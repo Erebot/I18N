@@ -338,7 +338,7 @@ class Intl implements \Erebot\IntlInterface
             $component,
             $message
         );
-        return ($translation === null) ? $message : $translation;
+        return (!strlen($translation)) ? $message : $translation;
     }
 
     public function gettext($message)
