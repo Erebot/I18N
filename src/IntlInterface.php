@@ -80,8 +80,8 @@ interface IntlInterface
      *
      * \retval opaque
      *      The corresponding category, returned as one of
-     *      the constants in ::Erebot::Intl::IntlInterface,
-     *      eg. ::Erebot::Intl::IntlInterface::LC_MESSAGES.
+     *      the constants in ::Erebot::IntlInterface,
+     *      eg. ::Erebot::IntlInterface::LC_MESSAGES.
      */
     public static function nameToCategory($name);
 
@@ -89,8 +89,8 @@ interface IntlInterface
      * Returns the name associated with a given category.
      *
      * \param opaque $category
-     *      One of the constants defined in ::Erebot::Intl::IntlInterface,
-     *      eg. ::Erebot::Intl::IntlInterface::LC_MESSAGES.
+     *      One of the constants defined in ::Erebot::IntlInterface,
+     *      eg. ::Erebot::IntlInterface::LC_MESSAGES.
      *
      * \retval string
      *      The name of that category (eg. "LC_MESSAGES").
@@ -102,10 +102,10 @@ interface IntlInterface
      * in canonical form for a given catergory.
      *
      * \param opaque $category
-     *      One of the constants defined in ::Erebot::Intl::IntlInterface
+     *      One of the constants defined in ::Erebot::IntlInterface
      *      indicating the category we're interested in querying.
      *      For the most basic usage, you should pass
-     *      ::Erebot::Intl::IntlInterface::LC_MESSAGES as the category.
+     *      ::Erebot::IntlInterface::LC_MESSAGES as the category.
      *
      * \retval string
      *      The canonical form of the target locale
@@ -118,10 +118,10 @@ interface IntlInterface
      * for a given catergory.
      *
      * \param opaque $category
-     *      One of the constants defined in ::Erebot::Intl::IntlInterface
+     *      One of the constants defined in ::Erebot::IntlInterface
      *      indicating the category we're interested in setting.
      *      For the most basic usage, you should pass
-     *      ::Erebot::Intl::IntlInterface::LC_MESSAGES as the category.
+     *      ::Erebot::IntlInterface::LC_MESSAGES as the category.
      *
      * \param array $candidates
      *      Array of locales that can be used.
@@ -154,11 +154,11 @@ interface IntlInterface
     public function gettext($message);
 
     /**
-     * \copydoc ::Erebot::Intl::IntlInterface::gettext
+     * \copydoc ::Erebot::IntlInterface::gettext
      *
      * \note
      *      This method is an alias for
-     *      ::Erebot::Intl::IntlInterface::gettext
+     *      ::Erebot::IntlInterface::gettext
      */
     public function _($message);
 }
