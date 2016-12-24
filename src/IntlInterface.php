@@ -158,7 +158,7 @@ interface IntlInterface
      *
      * \note
      *      This method is an alias for
-     *      ::Erebot::Intl::IntlInterface::gettext().
+     *      ::Erebot::Intl::IntlInterface::gettext
      */
     public function _($message);
 }
