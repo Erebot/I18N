@@ -154,7 +154,7 @@ interface IntlInterface
     public function gettext($message);
 
     /**
-     * \copydoc ::Erebot::Intl::IntlInterface::gettext()
+     * \copydoc ::Erebot::Intl::IntlInterface::gettext
      *
      * \note
      *      This method is an alias for
