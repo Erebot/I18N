@@ -16,6 +16,10 @@
     along with Erebot.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+if (!class_exists('PHPUnit_Framework_TestCase')) {
+    class_alias('\\PHPUnit\\Framework\\TestCase', 'PHPUnit_Framework_TestCase');
+}
+
 require(__DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Foo.php');
 
 class IntlTest extends PHPUnit_Framework_TestCase
