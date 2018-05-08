@@ -20,3 +20,21 @@ msgstr ""
 msgid "This is a test"
 msgstr "Ceci est un test"
 
+msgctxt "context"
+msgid "this translation is context-dependent"
+msgstr "cette traduction dépend du contexte (custom context)"
+
+msgid "this translation is context-dependent"
+msgstr "cette traduction dépend du contexte (default context)"
+
+msgid "found %d fatal error"
+msgid_plural "found %d fatal errors"
+msgstr[0] "%d erreur fatale trouvée"
+msgstr[1] "%d erreurs fatales trouvées"
+
+msgid ""
+"A multiline\n"
+"text"
+msgstr ""
+"Un texte\n"
+"multi-lignes"

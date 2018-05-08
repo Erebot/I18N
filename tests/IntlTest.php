@@ -20,10 +20,10 @@ if (!class_exists('PHPUnit_Framework_TestCase')) {
     class_alias('\\PHPUnit\\Framework\\TestCase', 'PHPUnit_Framework_TestCase');
 }
 
-require(__DIR__ . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'Foo.php');
-
-class IntlTest extends PHPUnit_Framework_TestCase
+class GnuGettextPoTest extends PHPUnit_Framework_TestCase
 {
+    protected $factory = '\\Erebot\\Intl\\Translator\\GnuGettextPo';
+
     public function setUp()
     {
         $this->translators = array();
@@ -32,30 +32,34 @@ class IntlTest extends PHPUnit_Framework_TestCase
             'fr_FR',
         );
         foreach ($locales as $locale) {
-            $this->translators[$locale] = new \Erebot\Intl("Foo");
-            $this->translators[$locale]->setLocale(
-                \Erebot\IntlInterface::LC_MESSAGES,
-                $locale
+            $cls = $this->factory;
+            $this->translators[$locale] = $cls::translation(
+                "Foo",
+                __DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'i18n',
+                array($locale),
+                true
             );
         }
     }
 
-    /**
-     * @covers \Erebot\Intl
-     */
     public function testGetLocale()
     {
-        foreach ($this->translators as $locale => $translator)
-            $this->assertEquals(
-                $locale,
-                $translator->getLocale(\Erebot\IntlInterface::LC_MESSAGES)
-            );
+        // A translator's getLocale() method returns
+        // the locale associated with that translator.
+        $this->assertEquals(
+            'fr_FR',
+            $this->translators['fr_FR']->getLocale()
+        );
+
+        // The fallback translator's getLocale() method
+        // always returns "C" (a language-neutral locale).
+        $this->assertEquals(
+            'C',
+            $this->translators['en_US']->getLocale()
+        );
     }
 
-    /**
-     * @covers \Erebot\Intl
-     */
-    public function testTranslation()
+    public function testBasicTranslations()
     {
         $message = "This is a test";
         $translations = array(
@@ -66,5 +70,56 @@ class IntlTest extends PHPUnit_Framework_TestCase
             $this->assertEquals($translation,
                 $this->translators[$locale]->gettext($message));
     }
+
+    public function testContextBasedTranslation()
+    {
+        $message = "this translation is context-dependent";
+        $translations = array(
+            'en_US' =>  $message,
+            'fr_FR' =>  "cette traduction dépend du contexte (custom context)",
+        );
+        foreach ($translations as $locale => $translation)
+            $this->assertEquals($translation,
+                $this->translators[$locale]->gettext($message, 'context'));
+
+        $translations = array(
+            'en_US' =>  $message,
+            'fr_FR' =>  "cette traduction dépend du contexte (default context)",
+        );
+        foreach ($translations as $locale => $translation)
+            $this->assertEquals($translation,
+                $this->translators[$locale]->gettext($message));
+    }
+
+    public function testMultilineTranslation()
+    {
+        $message = "A multiline\ntext";
+        $translations = array(
+            'en_US' =>  $message,
+            'fr_FR' =>  "Un texte\nmulti-lignes",
+        );
+        foreach ($translations as $locale => $translation)
+            $this->assertEquals($translation,
+                $this->translators[$locale]->gettext($message));
+    }
+
+    public function testPlurals()
+    {
+        $messages = array("found %d fatal error", "found %d fatal errors");
+        $translations = array(
+            'en_US' =>  $messages,
+            'fr_FR' =>  array("%d erreur fatale trouvée", "%d erreurs fatales trouvées"),
+        );
+        foreach ($translations as $locale => $translation)
+            list($singular, $plural) = $translation;
+            $this->assertEquals($singular,
+                $this->translators[$locale]->ngettext($messages[0], $messages[1], 1));
+            $this->assertEquals($plural,
+                $this->translators[$locale]->ngettext($messages[0], $messages[1], 42));
+    }
 }
 
+class GnuGettextMoTest extends GnuGettextPoTest
+{
+    protected $factory = '\\Erebot\\Intl\\Translator\\GnuGettextMo';
+}

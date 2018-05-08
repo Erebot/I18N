@@ -28,6 +28,8 @@ before_script:
     - rm composer.lock
     - composer self-update -n
     - composer install -n
+    - cp data/PluralParser.y src/Intl/
+    - vendor/bin/phplemon -q -s src/Intl/PluralParser.y
 
 script:
     - vendor/bin/phpunit --coverage-clover clover.xml
