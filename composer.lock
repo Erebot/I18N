@@ -103,7 +103,7 @@
                 {
                     "name": "Greg Beaver",
                     "email": "cellog@php.net",
-                    "role": "Lead"
+                    "role": "lead"
                 }
             ],
             "description": "Translate grammar files in Lemon Parser Generator format into a PHP 5 parser",
