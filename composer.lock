@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "fpoirotte/php_parsergenerator",
-            "version": "0.2.2",
+            "version": "0.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fpoirotte/PHP_ParserGenerator.git",
-                "reference": "831ceb8978d502b75c3d9ec23f159bf1d968e36c"
+                "reference": "7382d10e5cf2acbaf7f30e9084f533f03df6f17b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fpoirotte/PHP_ParserGenerator/zipball/831ceb8978d502b75c3d9ec23f159bf1d968e36c",
-                "reference": "831ceb8978d502b75c3d9ec23f159bf1d968e36c",
+                "url": "https://api.github.com/repos/fpoirotte/PHP_ParserGenerator/zipball/7382d10e5cf2acbaf7f30e9084f533f03df6f17b",
+                "reference": "7382d10e5cf2acbaf7f30e9084f533f03df6f17b",
                 "shasum": ""
             },
             "require": {
@@ -63,20 +63,20 @@
                 "lempar",
                 "parser"
             ],
-            "time": "2018-05-10T14:50:06+00:00"
+            "time": "2018-05-10T18:37:23+00:00"
         },
         {
             "name": "fpoirotte/php_parsergenerator_installer",
-            "version": "0.1.1",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fpoirotte/PHP_ParserGenerator_Installer.git",
-                "reference": "cd686bc92ab9eb815b468cec021efacf54dce2b0"
+                "reference": "5200d29101b6981dcf659e12f4c1e519f04d993a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fpoirotte/PHP_ParserGenerator_Installer/zipball/cd686bc92ab9eb815b468cec021efacf54dce2b0",
-                "reference": "cd686bc92ab9eb815b468cec021efacf54dce2b0",
+                "url": "https://api.github.com/repos/fpoirotte/PHP_ParserGenerator_Installer/zipball/5200d29101b6981dcf659e12f4c1e519f04d993a",
+                "reference": "5200d29101b6981dcf659e12f4c1e519f04d993a",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 }
             ],
             "description": "Automatically compiles parsers upon a package's installation",
-            "homepage": "https://github.com/fpoirotte/cryptal",
+            "homepage": "https://github.com/fpoirotte/PHP_ParserGenerator_Installer",
             "keywords": [
                 "compiler",
                 "generator",
@@ -116,7 +116,7 @@
                 "lempar",
                 "parser"
             ],
-            "time": "2018-05-10T14:18:12+00:00"
+            "time": "2018-05-10T21:21:15+00:00"
         }
     ],
     "packages-dev": [
