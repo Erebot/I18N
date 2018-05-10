@@ -4,8 +4,121 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "771dd3297da7dbe4dce803f17058ffae",
-    "packages": [],
+    "content-hash": "4eaaab8cd1b960309aac8ffae5a551bd",
+    "packages": [
+        {
+            "name": "fpoirotte/php_parsergenerator",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fpoirotte/PHP_ParserGenerator.git",
+                "reference": "9809bc04c1c2eb643231a8024183489baa478dd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fpoirotte/PHP_ParserGenerator/zipball/9809bc04c1c2eb643231a8024183489baa478dd3",
+                "reference": "9809bc04c1c2eb643231a8024183489baa478dd3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.0"
+            },
+            "provide": {
+                "pear/php_parsergenerator": "0.1.7"
+            },
+            "bin": [
+                "phplemon"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "PHP": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "François Poirotte",
+                    "email": "clicky@erebot.net",
+                    "role": "lead"
+                },
+                {
+                    "name": "Greg Beaver",
+                    "email": "cellog@php.net",
+                    "role": "lead"
+                }
+            ],
+            "description": "Translate grammar files in Lemon Parser Generator format into a PHP 5 parser",
+            "homepage": "https://github.com/fpoirotte/PHP_ParserGenerator",
+            "keywords": [
+                "lemon",
+                "lempar",
+                "parser"
+            ],
+            "time": "2018-05-10T13:57:07+00:00"
+        },
+        {
+            "name": "fpoirotte/php_parsergenerator_installer",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fpoirotte/PHP_ParserGenerator_Installer.git",
+                "reference": "cd686bc92ab9eb815b468cec021efacf54dce2b0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fpoirotte/PHP_ParserGenerator_Installer/zipball/cd686bc92ab9eb815b468cec021efacf54dce2b0",
+                "reference": "cd686bc92ab9eb815b468cec021efacf54dce2b0",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "fpoirotte/php_parsergenerator": "^0.2.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.3",
+                "squizlabs/php_codesniffer": "*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "fpoirotte\\PHP_ParserGenerator_Installer\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "fpoirotte\\PHP_ParserGenerator_Installer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "François Poirotte",
+                    "email": "clicky@erebot.net",
+                    "role": "lead"
+                }
+            ],
+            "description": "Automatically compiles parsers upon a package's installation",
+            "homepage": "https://github.com/fpoirotte/cryptal",
+            "keywords": [
+                "compiler",
+                "generator",
+                "lemon",
+                "lempar",
+                "parser"
+            ],
+            "time": "2018-05-10T14:18:12+00:00"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
@@ -60,60 +173,6 @@
                 "instantiate"
             ],
             "time": "2017-07-22T11:58:36+00:00"
-        },
-        {
-            "name": "fpoirotte/php_parsergenerator",
-            "version": "0.1.7-patch3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fpoirotte/PHP_ParserGenerator.git",
-                "reference": "e8bc2c6a78b3a895feb7185309281eb9ef13a08f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fpoirotte/PHP_ParserGenerator/zipball/e8bc2c6a78b3a895feb7185309281eb9ef13a08f",
-                "reference": "e8bc2c6a78b3a895feb7185309281eb9ef13a08f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.1.0"
-            },
-            "provide": {
-                "pear/php_parsergenerator": "0.1.7"
-            },
-            "bin": [
-                "phplemon"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "PHP": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Greg Beaver",
-                    "email": "cellog@php.net",
-                    "role": "lead"
-                }
-            ],
-            "description": "Translate grammar files in Lemon Parser Generator format into a PHP 5 parser",
-            "homepage": "https://github.com/fpoirotte/PHP_ParserGenerator",
-            "keywords": [
-                "lemon",
-                "lempar",
-                "parser"
-            ],
-            "time": "2016-09-17T12:17:04+00:00"
         },
         {
             "name": "myclabs/deep-copy",
