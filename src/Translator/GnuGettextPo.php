@@ -4,6 +4,10 @@ namespace Erebot\Intl\Translator;
 
 class GnuGettextPo extends GnuGettextMo
 {
+    /**
+     * See https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html#PO-Files
+     * for more information about this file format.
+     */
     protected function load($filename)
     {
         $lines = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);

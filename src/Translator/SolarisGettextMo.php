@@ -17,6 +17,10 @@ class SolarisGettextMo extends AbstractGettext
 
     const NO_CONTEXT = "\x04";
 
+    /**
+     * See https://github.com/nxmirrors/onnv/blob/master/usr/src/cmd/msgfmt/msgfmt.c
+     * for more information about this file format.
+     */
     protected function load($filename)
     {
         $this->catalog = array();

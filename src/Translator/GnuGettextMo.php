@@ -99,6 +99,10 @@ class GnuGettextMo extends AbstractGettext
         }
     }
 
+    /**
+     * See https://www.gnu.org/software/gettext/manual/html_node/MO-Files.html#MO-Files
+     * for more information about this file format.
+     */
     protected function load($filename)
     {
         $this->catalog = array();
