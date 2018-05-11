@@ -31,6 +31,9 @@ final class NullTranslator extends TranslatorInterface
 
     public function getLocale()
     {
-        return "C";
+        // When used with the intl extension (ICU),
+        // this emulates a locale with neutral rules,
+        // akin to POSIX's "C" locale or Windows' LCID 0.
+        return "en_US_POSIX";
     }
 }

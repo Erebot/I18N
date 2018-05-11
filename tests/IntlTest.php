@@ -52,9 +52,9 @@ class GnuGettextPoTest extends PHPUnit_Framework_TestCase
         );
 
         // The fallback translator's getLocale() method
-        // always returns "C" (a language-neutral locale).
+        // always returns "en_US_POSIX" (a neutral locale).
         $this->assertEquals(
-            'C',
+            'en_US_POSIX',
             $this->translators['en_US']->getLocale()
         );
     }
