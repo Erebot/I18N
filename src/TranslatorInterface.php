@@ -66,28 +66,28 @@ abstract class TranslatorInterface
 
     public static function getPreferredLocales()
     {
-       $locales = \Locale::getDefault();
-       $locales = empty($locales) ? array() : array($locales);
+        $locales = \Locale::getDefault();
+        $locales = empty($locales) ? array() : array($locales);
 
-       $localeSources = array(
-           'LANGUAGE'      => true,
-           'LC_ALL'        => false,
-           'LC_MESSAGES'   => false,
-           'LANG'          => false,
-       );
+        $localeSources = array(
+            'LANGUAGE'      => true,
+            'LC_ALL'        => false,
+            'LC_MESSAGES'   => false,
+            'LANG'          => false,
+        );
 
-       foreach ($localeSources as $source => $multiple) {
-           if (!isset($_SERVER[$source])) {
-               continue;
-           }
-           if ($multiple) {
-               $locales = explode(':', $_SERVER[$source]);
-           } else {
-               $locales = array($_SERVER[$source]);
-           }
-           break;
-       }
+        foreach ($localeSources as $source => $multiple) {
+            if (!isset($_SERVER[$source])) {
+                continue;
+            }
+            if ($multiple) {
+                $locales = explode(':', $_SERVER[$source]);
+            } else {
+                $locales = array($_SERVER[$source]);
+            }
+            break;
+        }
 
-       return $locales;
+        return $locales;
     }
 }
