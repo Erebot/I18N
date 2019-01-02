@@ -42,7 +42,7 @@ class GnuGettextMo extends AbstractGettext
         if (isset($this->metadata['plural-forms']['params']['nplurals'])) {
             $this->nplurals = (int) $this->metadata['plural-forms']['params']['nplurals'];
             if ((string) $this->nplurals !== $this->metadata['plural-forms']['params']['nplurals']) {
-                throw new \RuntimeException('Invalid metadata');
+                throw new \RuntimeException('Invalid metadata (invalid plurals count)');
             }
         }
 
@@ -50,7 +50,7 @@ class GnuGettextMo extends AbstractGettext
             $parser = new \Erebot\Intl\PluralParser($this->metadata['plural-forms']['params']['plural']);
             $this->plural = $parser->getEvaluator();
         } else {
-            throw new \RuntimeException('Invalid metadata');
+            throw new \RuntimeException('Invalid metadata (missing plural expression)');
         }
     }
 
@@ -64,12 +64,12 @@ class GnuGettextMo extends AbstractGettext
 
             $colon = strpos($line, ':');
             if ($colon === false) {
-                throw new \RuntimeException('Invalid metadata');
+                throw new \RuntimeException('Invalid metadata (missing value)');
             }
 
             $header = strtolower((string) substr($line, 0, $colon));
             if ($header === '') {
-                throw new \RuntimeException('Invalid metadata');
+                throw new \RuntimeException('Invalid metadata (empty header)');
             }
             $this->metadata[$header] = array('params' => array());
 
@@ -83,7 +83,7 @@ class GnuGettextMo extends AbstractGettext
                 $eq = strpos($param, '=');
                 if ($eq === false) {
                     if (isset($this->metadata[$header]['value'])) {
-                        throw new \RuntimeException('Invalid metadata');
+                        throw new \RuntimeException('Invalid metadata (value expected; got parameter)');
                     }
                     $this->metadata[$header]['value'] = $param;
                 } else {
@@ -91,7 +91,7 @@ class GnuGettextMo extends AbstractGettext
                     $value  = (string) substr($param, $eq + 1);
 
                     if ($name === '' || isset($this->metadata[$header]['params'][$name])) {
-                        throw new \RuntimeException('Invalid metadata');
+                        throw new \RuntimeException('Invalid metadata (invalid or duplicate parameter)');
                     }
                     $this->metadata[$header]['params'][$name] = $value;
                 }
