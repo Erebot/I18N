@@ -49,6 +49,8 @@ class GnuGettextMo extends AbstractGettext
         if (isset($this->metadata['plural-forms']['params']['plural'])) {
             $parser = new \Erebot\Intl\PluralParser($this->metadata['plural-forms']['params']['plural']);
             $this->plural = $parser->getEvaluator();
+        } elseif ($this->nplurals === 1) {
+            $this->plural = function ($n) { return 0; };
         } else {
             throw new \RuntimeException('Invalid metadata (missing plural expression)');
         }
