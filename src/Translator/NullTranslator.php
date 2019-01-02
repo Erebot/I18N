@@ -34,6 +34,6 @@ final class NullTranslator extends TranslatorInterface
         // When used with the intl extension (ICU),
         // this emulates a locale with neutral rules,
         // akin to POSIX's "C" locale or Windows' LCID 0.
-        return "en_US_POSIX";
+        return ($this->fallback !== null) ? $this->fallback->getLocale() : "en_US_POSIX";
     }
 }
