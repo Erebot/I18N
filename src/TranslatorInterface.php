@@ -63,4 +63,31 @@ abstract class TranslatorInterface
     abstract public function getFilename();
     abstract public function getDomain();
     abstract public function getLocale();
+
+    public static function getPreferredLocales()
+    {
+       $locales = \Locale::getDefault();
+       $locales = empty($locales) ? array() : array($locales);
+
+       $localeSources = array(
+           'LANGUAGE'      => true,
+           'LC_ALL'        => false,
+           'LC_MESSAGES'   => false,
+           'LANG'          => false,
+       );
+
+       foreach ($localeSources as $source => $multiple) {
+           if (!isset($_SERVER[$source])) {
+               continue;
+           }
+           if ($multiple) {
+               $locales = explode(':', $_SERVER[$source]);
+           } else {
+               $locales = array($_SERVER[$source]);
+           }
+           break;
+       }
+
+       return $locales;
+    }
 }
